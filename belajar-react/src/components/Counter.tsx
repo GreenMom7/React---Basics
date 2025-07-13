@@ -5,7 +5,9 @@ const Counter = () => {
 
   return (
     <>
-      <h1>Let's play</h1>
+      <h1 className="text-4xl text-gray-950 tracking-tighter text-balance">
+        Let's play
+      </h1>
       <div
         style={{
           display: "flex",
