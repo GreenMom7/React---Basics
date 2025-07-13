@@ -7,8 +7,6 @@ function App() {
     <div className="main-div">
       <h1>Welcome to React JS</h1>
 
-      <Counter />
-
       <Like />
     </div>
   );
