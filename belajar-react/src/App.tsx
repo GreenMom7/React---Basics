@@ -1,14 +1,18 @@
+import { Routes, Route } from "react-router";
 import "./App.css";
-import Counter from "./components/Counter";
-import Like from "./components/Like";
+import HomePage from "./pages/HomePage";
+import PlayPage from "./pages/PlayPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <div className="main-div">
-      <h1>Welcome to React JS</h1>
-
-      <Like />
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/play" element={<PlayPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
