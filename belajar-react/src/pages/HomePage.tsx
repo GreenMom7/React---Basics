@@ -5,12 +5,17 @@ import { Button } from "../components/ui/button";
 const HomePage = () => {
   return (
     <div>
-      <h1 className="mb-5">Welcome to React JS</h1>
+      <h1 className="mb-5 font-bold font-mono">Welcome to React JS</h1>
       <Like />
 
-      <Button className="m-2" variant="link" size="lg">
-        <Link to="/play">Play?</Link>
-      </Button>
+      <div className="m-4">
+        <Button className="m-2" variant="outline" size="sm">
+          <Link to="/play">Play?</Link>
+        </Button>
+        {/* <Button className="m-2" variant="outline" size="sm">
+          <Link to="/profile/">Profile</Link>
+        </Button> */}
+      </div>
     </div>
   );
 };
