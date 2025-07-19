@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const registerFormSchema = z.object({
   username: z.string().min(3).max(10),
   password: z.string().min(8),
+  age: z.coerce.number().min(18),
 });
 
 type RegisterFormSchema = z.infer<typeof registerFormSchema>;
@@ -41,6 +42,12 @@ const RFHPage = () => {
         </label>
         <span style={{ color: "red" }}>
           {form.formState.errors.password?.message}
+        </span>
+        <label>
+          Age : <input type="number" {...form.register("age")} />
+        </label>
+        <span style={{ color: "red" }}>
+          {form.formState.errors.age?.message}
         </span>
 
         <button style={{ width: "fit-content" }}>Register</button>
