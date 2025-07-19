@@ -1,12 +1,33 @@
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+// type RegisterFormSchema = {
+//   username: string;
+//   password: string;
+// };
+
+const registerFormSchema = z.object({
+  username: z.string().min(3).max(10),
+  password: z.string().min(8),
+});
+
+type RegisterFormSchema = z.infer<typeof registerFormSchema>;
+
 const RFHPage = () => {
-  const form = useForm();
+  const form = useForm<RegisterFormSchema>({
+    resolver: zodResolver(registerFormSchema),
+  });
+
+  const handleRegisterUser = (values: RegisterFormSchema) => {
+    alert("Form submitted");
+    console.log(values);
+  };
   return (
     <div>
       <h1>React Hook Form</h1>
 
       <form
-        action=""
+        onSubmit={form.handleSubmit(handleRegisterUser)}
         style={{ display: "flex", flexDirection: "column", gap: "8px" }}
       >
         <label>
@@ -15,6 +36,8 @@ const RFHPage = () => {
         <label>
           Passowrd : <input type="text" {...form.register("password")} />
         </label>
+
+        <button style={{ width: "fit-content" }}>Register</button>
       </form>
     </div>
   );
