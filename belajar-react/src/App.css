@@ -1,9 +1,31 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+h1 {
+  font-size: large;
+  font-weight: 700;
+  font-family: monospace;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
 }
-body {
-  background-color: beige;
-} */
+
+input,
+label {
+  margin-bottom: 1.25rem;
+  margin-left: 1.25rem;
+}
+
+input {
+  background-color: brown;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+button {
+  background-color: lightgreen;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: 1rem;
+}
+
+.container {
+  background-color: antiquewhite;
+  width: auto;
+}
