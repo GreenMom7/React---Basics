@@ -23,7 +23,7 @@ const RFHPage = () => {
     console.log(values);
   };
   return (
-    <div>
+    <div className="">
       <h1>React Hook Form</h1>
 
       <form
@@ -33,9 +33,15 @@ const RFHPage = () => {
         <label>
           Username : <input type="text" {...form.register("username")} />
         </label>
+        <span style={{ color: "red" }}>
+          {form.formState.errors.username?.message}
+        </span>
         <label>
           Passowrd : <input type="text" {...form.register("password")} />
         </label>
+        <span style={{ color: "red" }}>
+          {form.formState.errors.password?.message}
+        </span>
 
         <button style={{ width: "fit-content" }}>Register</button>
       </form>
