@@ -2,16 +2,23 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+
 // type RegisterFormSchema = {
 //   username: string;
 //   password: string;
 // };
 
-const registerFormSchema = z.object({
-  username: z.string().min(3).max(10),
-  password: z.string().min(8),
-  age: z.coerce.number<number>().min(18),
-});
+const registerFormSchema = z
+  .object({
+    username: z.string().min(3).max(10),
+    password: z.string().min(8),
+    repeatPassword: z.string(),
+    age: z.coerce.number().min(18),
+  })
+  .refine((data) => data.repeatPassword === data.password, {
+    message: "The passwords did not match",
+    path: ["repeatPassword"],
+  });
 
 type RegisterFormSchema = z.infer<typeof registerFormSchema>;
 
@@ -51,6 +58,14 @@ const RFHPage = () => {
         <span style={{ color: "red" }}>
           {form.formState.errors.password?.message}
         </span>
+
+        <label>
+          Repeat Password :{" "}
+          <input
+            type={showPassword ? "text" : "password"}
+            {...form.register("repeatPassword")}
+          />
+        </label>
 
         <label>
           <input
